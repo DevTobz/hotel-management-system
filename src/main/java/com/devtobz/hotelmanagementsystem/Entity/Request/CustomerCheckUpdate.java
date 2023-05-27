@@ -13,8 +13,5 @@ import java.time.LocalTime;
 
 public class CustomerCheckUpdate {
     private String name;
-
-    private int numbers;
-
-    private String work;
+    
 }
