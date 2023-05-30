@@ -1,7 +1,9 @@
 package com.devtobz.hotelmanagementsystem.Service;
 
 import com.devtobz.hotelmanagementsystem.Entity.Customer;
+import com.devtobz.hotelmanagementsystem.Entity.Dto.CustomerDto;
 import com.devtobz.hotelmanagementsystem.Entity.Enum.CheckOutStatus;
+import com.devtobz.hotelmanagementsystem.Entity.Mapper.CustomerMapper;
 import com.devtobz.hotelmanagementsystem.Entity.Request.CustomerCheckUpdate;
 import com.devtobz.hotelmanagementsystem.Entity.Request.CustomerRequest;
 import com.devtobz.hotelmanagementsystem.Entity.Room;
@@ -21,8 +23,10 @@ public class CustomerService {
 
     @Autowired
     private RoomRepository roomRepository;
+    @Autowired
+    private CustomerMapper customerMapper;
 
-    public String addCustomer(CustomerRequest customerRequest) {
+    public CustomerDto addCustomer(CustomerRequest customerRequest) {
         Customer customer = new Customer();
         customer.setIdentificationType(customerRequest.getIdentificationType());
         customer.setPhoneNumber(customerRequest.getPhoneNumber());
@@ -34,7 +38,7 @@ public class CustomerService {
 
         customerRepository.save(customer);
 
-        return"Customer Successfully saved to the database";
+        return customerMapper.apply(customer);
     }
 
     @Transactional

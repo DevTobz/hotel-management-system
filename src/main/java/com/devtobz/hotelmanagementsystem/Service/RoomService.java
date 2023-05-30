@@ -1,5 +1,7 @@
 package com.devtobz.hotelmanagementsystem.Service;
 
+import com.devtobz.hotelmanagementsystem.Entity.Dto.RoomDto;
+import com.devtobz.hotelmanagementsystem.Entity.Mapper.RoomMapper;
 import com.devtobz.hotelmanagementsystem.Entity.Request.RoomUpdate;
 import com.devtobz.hotelmanagementsystem.Entity.Room;
 import com.devtobz.hotelmanagementsystem.Entity.Request.RoomRequest;
@@ -17,8 +19,11 @@ public class RoomService {
     @Autowired
     private RoomRepository roomRepository;
 
+    @Autowired
+    private RoomMapper roomMapper;
+
     //Creates Room and persist to the database
-    public String createRoom(RoomRequest roomRequest) {
+    public RoomDto createRoom(RoomRequest roomRequest) {
         Room room = new Room();
         room.setRoomNumber(roomRequest.getRoomNumber());
         room.setPrice(roomRequest.getPrice());
@@ -32,7 +37,7 @@ public class RoomService {
         }
         roomRepository.save(room);
 
-        return "Room Successfully added to the database";
+        return roomMapper.apply(room);
     }
 
     //Gets all rooms

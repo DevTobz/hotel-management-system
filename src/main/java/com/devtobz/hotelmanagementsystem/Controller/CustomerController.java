@@ -1,9 +1,11 @@
 package com.devtobz.hotelmanagementsystem.Controller;
 
+import com.devtobz.hotelmanagementsystem.Entity.Dto.CustomerDto;
 import com.devtobz.hotelmanagementsystem.Entity.Request.CustomerCheckUpdate;
 import com.devtobz.hotelmanagementsystem.Entity.Request.CustomerRequest;
 import com.devtobz.hotelmanagementsystem.Service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,21 +15,24 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
-    @PostMapping(path = "customer/addCustomer")
-    public ResponseEntity<String> addCustomer(@RequestBody CustomerRequest customerRequest){
-       return ResponseEntity.ok(customerService.addCustomer(customerRequest));
+    @PostMapping(path = "/customer/addCustomer")
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<CustomerDto> addCustomer(@RequestBody CustomerRequest customerRequest){
+       return new ResponseEntity<>(customerService.addCustomer(customerRequest), HttpStatus.CREATED);
     }
 
-    @PutMapping(path = "customer/updateCheckInStatus")
+    @PutMapping(path = "/customer/updateCheckInStatus")
+    @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<String> updateCheckInStatus(@RequestParam String name,
                                                       @RequestParam int roomNumber){
-       return ResponseEntity.ok(customerService.updateCheckInStatus(name,roomNumber));
+       return new ResponseEntity<>(customerService.updateCheckInStatus(name,roomNumber),HttpStatus.OK);
     }
 
-    @PutMapping(path="customer/updateCheckOutStatus")
+    @PutMapping(path="/customer/updateCheckOutStatus")
+    @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<String> updateCheckOutStatus(@RequestParam String name,
                                                        @RequestParam int roomNumber){
-        return ResponseEntity.ok(customerService.updateCheckOutStatus(name,roomNumber));
+        return new ResponseEntity<>(customerService.updateCheckOutStatus(name,roomNumber),HttpStatus.OK);
     }
 
 }

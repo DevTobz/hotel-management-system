@@ -1,12 +1,14 @@
 package com.devtobz.hotelmanagementsystem.Service;
 
+
+import com.devtobz.hotelmanagementsystem.Entity.Dto.EmployeeDto;
 import com.devtobz.hotelmanagementsystem.Entity.Employee;
+import com.devtobz.hotelmanagementsystem.Entity.Mapper.EmployeeMapper;
 import com.devtobz.hotelmanagementsystem.Entity.Request.EmployeeRequest;
 import com.devtobz.hotelmanagementsystem.Entity.Request.EmployeeUpdate;
 import com.devtobz.hotelmanagementsystem.Repository.EmployeeRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,10 +18,12 @@ public class EmployeeService {
 
     @Autowired
     private EmployeeRepository employeeRepository;
+    @Autowired
+    private EmployeeMapper employeeMapper;
 
 
     //Create a new employee to the database
-    public String createEmployee(EmployeeRequest request) {
+    public EmployeeDto createEmployee(EmployeeRequest request) {
        Employee employee= new Employee();
 
        employee.setAddress(request.getAddress());
@@ -32,8 +36,9 @@ public class EmployeeService {
        employee.setPhoneNumber(request.getPhoneNumber());
 
        employeeRepository.save(employee);
+      EmployeeDto employeeDto = employeeMapper.apply(employee);
 
-       return "Employee Created Successfully";
+       return employeeDto;
     }
 
     //Get all employee in the database

@@ -26,7 +26,7 @@ public class Customer {
     private Long Id;
 
     @Enumerated(EnumType.STRING)
-    private IdentificationType IdentificationType;
+    private IdentificationType identificationType;
     private String phoneNumber;
     private String name;
 

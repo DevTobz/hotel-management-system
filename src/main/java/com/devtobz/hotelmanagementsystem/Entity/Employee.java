@@ -23,7 +23,10 @@ public class Employee {
 
     private String name;
     private int age;
+    @Enumerated(EnumType.STRING)
     private Gender gender;
+
+    @Enumerated(EnumType.STRING)
     private Role role;
     private int salary;
     private String phoneNumber;
