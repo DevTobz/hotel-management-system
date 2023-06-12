@@ -9,6 +9,7 @@ import com.devtobz.hotelmanagementsystem.Entity.Request.EmployeeRequest;
 import com.devtobz.hotelmanagementsystem.Service.EmployeeService;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -25,6 +26,9 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.hamcrest.Matchers.*;
 import static org.mockito.Mockito.when;
@@ -50,6 +54,7 @@ class EmployeeControllerTest {
     private Employee employee;
 
     private EmployeeDto employeeDto;
+    private List<Employee> employeeList = new ArrayList<>();
 
     @BeforeEach
     void setUp() {
@@ -81,25 +86,33 @@ class EmployeeControllerTest {
                 employee.getPhoneNumber(),
                 employee.getAddress(),
                 employee.getEmail());
+
+       employeeList.add(employee);
+
     }
 
     @Test
     void employeeController_shouldCreateEmployee() throws Exception {
 
-        when(employeeService.createEmployee(request)).thenReturn(employeeDto);
+       when(employeeService.createEmployee(request)).thenReturn(employeeDto);
         ResultActions response = mockMvc.perform(MockMvcRequestBuilders.
                 post("/homepage/employee/createEmployee").
                 contentType(MediaType.APPLICATION_JSON).
                 content(objectMapper.writeValueAsString(request)));
        response.andDo(MockMvcResultHandlers.print());
-
-
-
+       response.andExpect(jsonPath("$.name", CoreMatchers.is(employeeDto.name())));
 
     }
 
     @Test
-    void getAllEmployee() {
+    void getAllEmployee() throws Exception {
+
+        when(employeeService.getAllEmployee()).thenReturn(employeeList);
+        ResultActions actions = mockMvc.perform(MockMvcRequestBuilders.
+                get("/homepage/employee/getAllEmployee").
+                contentType(MediaType.APPLICATION_JSON));
+        actions.andDo(print());
+       actions.andExpect(jsonPath("$[0].name",CoreMatchers.is("employeeTest1")));
     }
 
     @Test
@@ -108,5 +121,6 @@ class EmployeeControllerTest {
 
     @Test
     void deleteEmployee() {
+        when(employeeService.deleteEmployee(request.getName())).thenReturn("Deleted");
     }
 }
