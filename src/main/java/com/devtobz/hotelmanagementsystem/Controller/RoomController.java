@@ -1,16 +1,15 @@
 package com.devtobz.hotelmanagementsystem.Controller;
 
-import com.devtobz.hotelmanagementsystem.Entity.Dto.RoomDto;
-import com.devtobz.hotelmanagementsystem.Entity.Request.RoomRequest;
-import com.devtobz.hotelmanagementsystem.Entity.Request.RoomUpdate;
-import com.devtobz.hotelmanagementsystem.Entity.Room;
+import com.devtobz.hotelmanagementsystem.entity.request.RoomRequest;
+import com.devtobz.hotelmanagementsystem.entity.request.RoomUpdate;
+import com.devtobz.hotelmanagementsystem.entity.response.ApiResponse;
 import com.devtobz.hotelmanagementsystem.Service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.time.ZonedDateTime;
 
 @RestController
 @RequestMapping(path = "/homepage")
@@ -21,30 +20,61 @@ public class RoomController {
 
     // create new room
     @PostMapping(path = "/rooms/addRoom")
-    @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<RoomDto> createRoom(@RequestBody RoomRequest roomRequest){
-        return new ResponseEntity<>(roomService.createRoom(roomRequest),HttpStatus.CREATED);
+    public ResponseEntity<?> createRoom(@RequestBody RoomRequest roomRequest){
+        ApiResponse apiResponse = ApiResponse.builder().
+                isSuccessful(true).
+                status(HttpStatus.CREATED.value()).
+                timeStamp(ZonedDateTime.now()).
+                data(roomService.createRoom(roomRequest)).
+                build();
+        return new ResponseEntity<>(apiResponse,HttpStatus.CREATED);
     }
     // view all rooms
     @GetMapping(path = "/rooms/viewAllRooms")
-    public ResponseEntity<List<Room>> getAllRoom(){
-        return ResponseEntity.ok(roomService.getAllRoom());
+    public ResponseEntity<?> getAllRoom(){
+        ApiResponse apiResponse = ApiResponse.builder().
+                isSuccessful(true).
+                status(HttpStatus.OK.value()).
+                timeStamp(ZonedDateTime.now()).
+                data(roomService.getAllRoom()).
+                build();
+        return new ResponseEntity<>(apiResponse,HttpStatus.OK);
     }
 
     @PutMapping(path = "/rooms/updateRoomStatus")
-    public ResponseEntity<String> updateRoomStatus(@RequestBody RoomUpdate roomUpdate,
+    public ResponseEntity<?> updateRoomStatus(@RequestBody RoomUpdate roomUpdate,
                                                    @RequestParam int roomNumber){
-        return ResponseEntity.ok(roomService.updateRoomByRoomNumber(roomUpdate,roomNumber));
+        ApiResponse apiResponse = ApiResponse.builder().
+                isSuccessful(true).
+                status(HttpStatus.OK.value()).
+                timeStamp(ZonedDateTime.now()).
+                data(roomService.updateRoomStatusByRoomNumber(roomUpdate,roomNumber)).
+                message("Room Status have been updated").
+                build();
+        return new ResponseEntity<>(apiResponse,HttpStatus.OK);
     }
 
     //Gets all available rooms
     @GetMapping(path = "/rooms/AvailableRooms")
-    public ResponseEntity<List<Room>> getAvailableRooms(){
-       return ResponseEntity.ok(roomService.getAvailableRooms());
+    public ResponseEntity<?> getAvailableRooms(){
+        ApiResponse apiResponse = ApiResponse.builder().
+                isSuccessful(true).
+                status(HttpStatus.OK.value()).
+                timeStamp(ZonedDateTime.now()).
+                data(roomService.getAvailableRooms()).
+                build();
+
+        return new ResponseEntity<>(apiResponse,HttpStatus.OK);
     }
 
     @GetMapping(path = "/rooms/allCleanedAvailableRoom")
-    public ResponseEntity<List<Room>> getAllCleanedAndAvailableRooms(){
-        return ResponseEntity.ok(roomService.getAllCleanedAndAvailableRooms());
+    public ResponseEntity<?> getAllCleanedAndAvailableRooms(){
+        ApiResponse apiResponse = ApiResponse.builder().
+                isSuccessful(true).
+                status(HttpStatus.OK.value()).
+                timeStamp(ZonedDateTime.now()).
+                data(roomService.getAllCleanedAndAvailableRooms()).
+                build();
+        return new ResponseEntity<>(apiResponse,HttpStatus.OK);
     }
 }

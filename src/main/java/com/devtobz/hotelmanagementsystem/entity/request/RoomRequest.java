@@ -1,6 +1,6 @@
-package com.devtobz.hotelmanagementsystem.Entity.Request;
+package com.devtobz.hotelmanagementsystem.entity.request;
 
-import com.devtobz.hotelmanagementsystem.Entity.Enum.BedType;
+import com.devtobz.hotelmanagementsystem.entity.Enum.BedType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

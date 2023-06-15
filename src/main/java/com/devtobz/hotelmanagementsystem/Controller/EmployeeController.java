@@ -1,16 +1,15 @@
 package com.devtobz.hotelmanagementsystem.Controller;
 
-import com.devtobz.hotelmanagementsystem.Entity.Dto.EmployeeDto;
-import com.devtobz.hotelmanagementsystem.Entity.Employee;
-import com.devtobz.hotelmanagementsystem.Entity.Request.EmployeeRequest;
-import com.devtobz.hotelmanagementsystem.Entity.Request.EmployeeUpdate;
+import com.devtobz.hotelmanagementsystem.entity.request.EmployeeRequest;
+import com.devtobz.hotelmanagementsystem.entity.request.EmployeeUpdate;
+import com.devtobz.hotelmanagementsystem.entity.response.ApiResponse;
 import com.devtobz.hotelmanagementsystem.Service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.time.ZonedDateTime;
 
 @RestController
 @RequestMapping(path = "/homepage")
@@ -20,34 +19,55 @@ public class EmployeeController {
 
     // Saving Employee to database
     @PostMapping(path = "/employee/createEmployee")
-    @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<EmployeeDto> createEmployee(@RequestBody EmployeeRequest request){
+    public ResponseEntity<?> createEmployee(@RequestBody EmployeeRequest request){
+        ApiResponse apiResponse = ApiResponse.builder().
+                isSuccessful(true).
+                status(HttpStatus.CREATED.value()).
+                timeStamp(ZonedDateTime.now()).
+                data(employeeService.createEmployee(request)).
+                build();
 
-        return new ResponseEntity<>(employeeService.createEmployee(request),HttpStatus.CREATED);
+        return new ResponseEntity<>(apiResponse,HttpStatus.CREATED);
     }
 
     // Getting all Employee from the database
     @GetMapping(path = "/employee/getAllEmployee")
-    @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<List<Employee>> getAllEmployee (){
-        return new ResponseEntity<>(employeeService.getAllEmployee(),HttpStatus.OK);
+    public ResponseEntity<?> getAllEmployee (){
+        ApiResponse apiResponse = ApiResponse.builder().
+                isSuccessful(true).
+                status(HttpStatus.OK.value()).
+                timeStamp(ZonedDateTime.now()).
+                data(employeeService.getAllEmployee()).
+                build();
+        return new ResponseEntity<>(apiResponse,HttpStatus.OK);
     }
 
     //Update Employee by Name
     @PutMapping(path = "/employee/editEmployee")
-    @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<String> editEmployee(EmployeeUpdate employeeUpdate,
+    public ResponseEntity<?> editEmployee(EmployeeUpdate employeeUpdate,
                                                @RequestParam String name){
-
-    return new ResponseEntity<>(employeeService.editEmployee(name,employeeUpdate),HttpStatus.OK);
+        ApiResponse apiResponse = ApiResponse.builder().
+                isSuccessful(true).
+                status(HttpStatus.OK.value()).
+                timeStamp(ZonedDateTime.now()).
+                data(employeeService.editEmployee(name,employeeUpdate)).
+                message("Employee Details updated successfully").
+                build();
+    return new ResponseEntity<>(apiResponse,HttpStatus.OK);
 
     }
 
     //Delete employee from the database
     @DeleteMapping(path = "/employee/deleteEmployee")
-    @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<String> deleteEmployee(@RequestParam String name){
-        return new  ResponseEntity<>(employeeService.deleteEmployee(name),HttpStatus.OK);
+    public ResponseEntity<?> deleteEmployee(@RequestParam String name){
+        String message = employeeService.deleteEmployee(name);
+        ApiResponse apiResponse = ApiResponse.builder().
+                isSuccessful(true).
+                status(HttpStatus.OK.value()).
+                timeStamp(ZonedDateTime.now()).
+                message(message).
+                build();
+        return new  ResponseEntity<>(apiResponse,HttpStatus.OK);
 
     }
 

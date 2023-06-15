@@ -1,6 +1,6 @@
 package com.devtobz.hotelmanagementsystem.Config;
 
-import com.devtobz.hotelmanagementsystem.Entity.Employee;
+import com.devtobz.hotelmanagementsystem.entity.Employee;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,11 +1,8 @@
-package com.devtobz.hotelmanagementsystem.Entity.Request;
+package com.devtobz.hotelmanagementsystem.entity.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-
-import java.time.LocalTime;
 
 @Data
 @AllArgsConstructor

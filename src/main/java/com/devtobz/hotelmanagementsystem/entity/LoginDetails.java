@@ -1,4 +1,4 @@
-package com.devtobz.hotelmanagementsystem.Entity;
+package com.devtobz.hotelmanagementsystem.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

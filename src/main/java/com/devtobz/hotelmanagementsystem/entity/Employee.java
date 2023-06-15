@@ -1,7 +1,7 @@
-package com.devtobz.hotelmanagementsystem.Entity;
+package com.devtobz.hotelmanagementsystem.entity;
 
-import com.devtobz.hotelmanagementsystem.Entity.Enum.Gender;
-import com.devtobz.hotelmanagementsystem.Entity.Enum.Role;
+import com.devtobz.hotelmanagementsystem.entity.Enum.Gender;
+import com.devtobz.hotelmanagementsystem.entity.Enum.Role;
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

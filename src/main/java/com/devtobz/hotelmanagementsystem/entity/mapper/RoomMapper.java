@@ -1,7 +1,7 @@
-package com.devtobz.hotelmanagementsystem.Entity.Mapper;
+package com.devtobz.hotelmanagementsystem.entity.mapper;
 
-import com.devtobz.hotelmanagementsystem.Entity.Dto.RoomDto;
-import com.devtobz.hotelmanagementsystem.Entity.Room;
+import com.devtobz.hotelmanagementsystem.entity.dto.RoomDto;
+import com.devtobz.hotelmanagementsystem.entity.Room;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

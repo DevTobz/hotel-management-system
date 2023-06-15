@@ -1,9 +1,14 @@
 package com.devtobz.hotelmanagementsystem.Controller;
 
-import com.devtobz.hotelmanagementsystem.Entity.LoginDetails;
+import com.devtobz.hotelmanagementsystem.entity.LoginDetails;
+import com.devtobz.hotelmanagementsystem.entity.response.ApiResponse;
 import com.devtobz.hotelmanagementsystem.Service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.ZonedDateTime;
 
 @RestController
 @RequestMapping(path = "/login")
@@ -13,10 +18,16 @@ public class LoginController {
     private LoginService loginService;
 
     @PutMapping(path = "/authenticate")
-    public String Authenticate(@RequestBody LoginDetails loginDetails,
-                             @RequestParam String name){
+    public ResponseEntity<?> Authenticate(@RequestBody LoginDetails loginDetails,
+                                       @RequestParam String name){
 
-     return loginService.authenticate(loginDetails,name);
+        ApiResponse apiResponse = ApiResponse.builder().
+                isSuccessful(true).
+                status(HttpStatus.OK.value()).
+                timeStamp(ZonedDateTime.now()).
+                data(loginService.authenticate(loginDetails,name)).
+                build();
+     return new ResponseEntity<>(apiResponse,HttpStatus.OK);
     }
 
 }

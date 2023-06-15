@@ -1,7 +1,7 @@
-package com.devtobz.hotelmanagementsystem.Entity.Mapper;
+package com.devtobz.hotelmanagementsystem.entity.mapper;
 
-import com.devtobz.hotelmanagementsystem.Entity.Customer;
-import com.devtobz.hotelmanagementsystem.Entity.Dto.CustomerDto;
+import com.devtobz.hotelmanagementsystem.entity.Customer;
+import com.devtobz.hotelmanagementsystem.entity.dto.CustomerDto;
 import org.springframework.stereotype.Service;
 
 import java.util.function.Function;

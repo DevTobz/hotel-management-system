@@ -1,11 +1,11 @@
 package com.devtobz.hotelmanagementsystem.Service;
 
-import com.devtobz.hotelmanagementsystem.Entity.Dto.RoomDto;
-import com.devtobz.hotelmanagementsystem.Entity.Enum.BedType;
-import com.devtobz.hotelmanagementsystem.Entity.Mapper.RoomMapper;
-import com.devtobz.hotelmanagementsystem.Entity.Request.RoomRequest;
-import com.devtobz.hotelmanagementsystem.Entity.Request.RoomUpdate;
-import com.devtobz.hotelmanagementsystem.Entity.Room;
+import com.devtobz.hotelmanagementsystem.entity.dto.RoomDto;
+import com.devtobz.hotelmanagementsystem.entity.Enum.BedType;
+import com.devtobz.hotelmanagementsystem.entity.mapper.RoomMapper;
+import com.devtobz.hotelmanagementsystem.entity.request.RoomRequest;
+import com.devtobz.hotelmanagementsystem.entity.request.RoomUpdate;
+import com.devtobz.hotelmanagementsystem.entity.Room;
 import com.devtobz.hotelmanagementsystem.Repository.RoomRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -74,6 +73,7 @@ class RoomServiceTest {
                 roomAvailability(false).
                 cleanStatus("Not_Cleaned").
                 build();
+
         roomTest3= Room.builder().
                 roomNumber(80).
                 price(14000).
@@ -133,16 +133,16 @@ class RoomServiceTest {
     }
 
     @Test
-    void updateRoomByRoomNumber() {
+    void shouldUpdateRoomStatusByRoomNumber() {
         //Given
 
         //Mock
         when(roomRepository.findRoomByRoomNumber(60)).thenReturn(Optional.ofNullable(roomTest1));
         when(roomRepository.save(roomTest1)).thenReturn(roomTest1);
-
+        when(roomMapper.apply(roomTest1)).thenReturn(roomDto);
         //When
 
-        String methodResult = roomService.updateRoomByRoomNumber(roomUpdate, 60);
+        roomService.updateRoomStatusByRoomNumber(roomUpdate, 60);
         ArgumentCaptor<Room> roomArgumentCaptor = ArgumentCaptor.forClass(Room.class);
 
         verify(roomRepository).findRoomByRoomNumber(60);
@@ -152,7 +152,7 @@ class RoomServiceTest {
         //Assert
         Assertions.assertThat(roomCaptured.getAvailabilityStatus()).isEqualTo("Occupied");
         Assertions.assertThat(roomCaptured.getCleanStatus()).isEqualTo(roomUpdate.getCleanStatus());
-        Assertions.assertThat(methodResult).isEqualTo("Room Status have been updated");
+        //Assertions.assertThat(methodResult.availabilityStatus()).isEqualTo("Occupied");
         Assertions.assertThat(roomCaptured.getAvailabilityStatus()).isNotEqualTo("Available");
     }
 

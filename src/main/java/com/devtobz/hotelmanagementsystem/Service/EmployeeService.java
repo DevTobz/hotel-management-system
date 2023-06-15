@@ -1,19 +1,17 @@
 package com.devtobz.hotelmanagementsystem.Service;
 
 
-import com.devtobz.hotelmanagementsystem.Entity.Dto.EmployeeDto;
-import com.devtobz.hotelmanagementsystem.Entity.Employee;
-import com.devtobz.hotelmanagementsystem.Entity.Mapper.EmployeeMapper;
-import com.devtobz.hotelmanagementsystem.Entity.Request.EmployeeRequest;
-import com.devtobz.hotelmanagementsystem.Entity.Request.EmployeeUpdate;
+import com.devtobz.hotelmanagementsystem.entity.dto.EmployeeDto;
+import com.devtobz.hotelmanagementsystem.entity.Employee;
+import com.devtobz.hotelmanagementsystem.entity.mapper.EmployeeMapper;
+import com.devtobz.hotelmanagementsystem.entity.request.EmployeeRequest;
+import com.devtobz.hotelmanagementsystem.entity.request.EmployeeUpdate;
 import com.devtobz.hotelmanagementsystem.Repository.EmployeeRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service
 public class EmployeeService {
@@ -57,7 +55,7 @@ public class EmployeeService {
 
     // updates User by name
     @Transactional
-    public String editEmployee(String name, EmployeeUpdate employeeUpdate) {
+    public EmployeeDto editEmployee(String name, EmployeeUpdate employeeUpdate) {
         Employee employee = employeeRepository.findByName(name).
                 orElseThrow(()-> new RuntimeException("Employee wasn't found in the database"));
 
@@ -70,7 +68,7 @@ public class EmployeeService {
 
         employeeRepository.save(employee);
 
-        return "Employee updated";
+        return employeeMapper.apply(employee);
     }
 
     //Delete User

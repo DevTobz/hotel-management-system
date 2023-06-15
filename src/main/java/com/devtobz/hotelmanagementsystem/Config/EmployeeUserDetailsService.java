@@ -1,6 +1,6 @@
 package com.devtobz.hotelmanagementsystem.Config;
 
-import com.devtobz.hotelmanagementsystem.Entity.Employee;
+import com.devtobz.hotelmanagementsystem.entity.Employee;
 import com.devtobz.hotelmanagementsystem.Repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 

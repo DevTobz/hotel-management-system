@@ -1,12 +1,11 @@
 package com.devtobz.hotelmanagementsystem.Service;
 
-import com.devtobz.hotelmanagementsystem.Entity.Customer;
-import com.devtobz.hotelmanagementsystem.Entity.Dto.CustomerDto;
-import com.devtobz.hotelmanagementsystem.Entity.Enum.CheckOutStatus;
-import com.devtobz.hotelmanagementsystem.Entity.Mapper.CustomerMapper;
-import com.devtobz.hotelmanagementsystem.Entity.Request.CustomerCheckUpdate;
-import com.devtobz.hotelmanagementsystem.Entity.Request.CustomerRequest;
-import com.devtobz.hotelmanagementsystem.Entity.Room;
+import com.devtobz.hotelmanagementsystem.entity.Customer;
+import com.devtobz.hotelmanagementsystem.entity.dto.CustomerDto;
+import com.devtobz.hotelmanagementsystem.entity.Enum.CheckOutStatus;
+import com.devtobz.hotelmanagementsystem.entity.mapper.CustomerMapper;
+import com.devtobz.hotelmanagementsystem.entity.request.CustomerRequest;
+import com.devtobz.hotelmanagementsystem.entity.Room;
 import com.devtobz.hotelmanagementsystem.Repository.CustomerRepository;
 import com.devtobz.hotelmanagementsystem.Repository.RoomRepository;
 import jakarta.transaction.Transactional;
@@ -42,7 +41,7 @@ public class CustomerService {
     }
 
     @Transactional
-    public String updateCheckInStatus(String name,int roomNumber) {
+    public CustomerDto updateCheckInStatus(String name,int roomNumber) {
        Customer customer = customerRepository.findByName(name).
                             orElseThrow(()->new RuntimeException("Customer not found in the database"));
 
@@ -61,11 +60,11 @@ public class CustomerService {
        room.setCustomer(customer);
        roomRepository.save(room);
 
-       return"Customer CheckIn Status updated";
+       return customerMapper.apply(customer);
     }
 
     @Transactional
-    public String updateCheckOutStatus(String name, int roomNumber) {
+    public Object updateCheckOutStatus(String name, int roomNumber) {
        Customer customer = customerRepository.findByName(name).orElseThrow(()-> new RuntimeException("Customer not found in the database"));
        Room room = roomRepository.findRoomByRoomNumber(roomNumber).orElseThrow(()-> new RuntimeException("Room not found"));
 
@@ -76,7 +75,8 @@ public class CustomerService {
 
            room.setCustomer(null);
            roomRepository.save(room);
-           return "Customer CheckOut Status updated";
+
+           return customerMapper.apply(customer);
        }else{
            return "Pending balance to be fulfilled";
        }

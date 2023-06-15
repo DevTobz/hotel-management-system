@@ -1,8 +1,8 @@
 package com.devtobz.hotelmanagementsystem.Service;
 
-import com.devtobz.hotelmanagementsystem.Entity.Employee;
-import com.devtobz.hotelmanagementsystem.Entity.Enum.Role;
-import com.devtobz.hotelmanagementsystem.Entity.LoginDetails;
+import com.devtobz.hotelmanagementsystem.entity.Employee;
+import com.devtobz.hotelmanagementsystem.entity.Enum.Role;
+import com.devtobz.hotelmanagementsystem.entity.LoginDetails;
 import com.devtobz.hotelmanagementsystem.Repository.EmployeeRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
-package com.devtobz.hotelmanagementsystem.Entity;
+package com.devtobz.hotelmanagementsystem.entity;
 
-import com.devtobz.hotelmanagementsystem.Entity.Enum.BedType;
+import com.devtobz.hotelmanagementsystem.entity.Enum.BedType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

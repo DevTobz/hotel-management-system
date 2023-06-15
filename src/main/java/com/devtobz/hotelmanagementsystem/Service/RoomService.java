@@ -1,17 +1,16 @@
 package com.devtobz.hotelmanagementsystem.Service;
 
-import com.devtobz.hotelmanagementsystem.Entity.Dto.RoomDto;
-import com.devtobz.hotelmanagementsystem.Entity.Mapper.RoomMapper;
-import com.devtobz.hotelmanagementsystem.Entity.Request.RoomUpdate;
-import com.devtobz.hotelmanagementsystem.Entity.Room;
-import com.devtobz.hotelmanagementsystem.Entity.Request.RoomRequest;
+import com.devtobz.hotelmanagementsystem.entity.dto.RoomDto;
+import com.devtobz.hotelmanagementsystem.entity.mapper.RoomMapper;
+import com.devtobz.hotelmanagementsystem.entity.request.RoomUpdate;
+import com.devtobz.hotelmanagementsystem.entity.Room;
+import com.devtobz.hotelmanagementsystem.entity.request.RoomRequest;
 import com.devtobz.hotelmanagementsystem.Repository.RoomRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class RoomService {
@@ -47,7 +46,7 @@ public class RoomService {
     }
 
     @Transactional
-    public String updateRoomByRoomNumber(RoomUpdate roomUpdate, int roomNumber) {
+    public RoomDto updateRoomStatusByRoomNumber(RoomUpdate roomUpdate, int roomNumber) {
         Room room = roomRepository.findRoomByRoomNumber(roomNumber).
                 orElseThrow(()->new RuntimeException("Room wasn't found in the database"));
 
@@ -59,7 +58,7 @@ public class RoomService {
         room.setCleanStatus(roomUpdate.getCleanStatus());
         roomRepository.save(room);
 
-        return"Room Status have been updated";
+        return roomMapper.apply(room);
     }
 
     //returns every available room

@@ -1,11 +1,10 @@
 package com.devtobz.hotelmanagementsystem.Controller;
 
-import com.devtobz.hotelmanagementsystem.Entity.Dto.EmployeeDto;
-import com.devtobz.hotelmanagementsystem.Entity.Employee;
-import com.devtobz.hotelmanagementsystem.Entity.Enum.Gender;
-import com.devtobz.hotelmanagementsystem.Entity.Enum.Role;
-import com.devtobz.hotelmanagementsystem.Entity.Mapper.EmployeeMapper;
-import com.devtobz.hotelmanagementsystem.Entity.Request.EmployeeRequest;
+import com.devtobz.hotelmanagementsystem.entity.dto.EmployeeDto;
+import com.devtobz.hotelmanagementsystem.entity.Employee;
+import com.devtobz.hotelmanagementsystem.entity.Enum.Gender;
+import com.devtobz.hotelmanagementsystem.entity.Enum.Role;
+import com.devtobz.hotelmanagementsystem.entity.request.EmployeeRequest;
 import com.devtobz.hotelmanagementsystem.Service.EmployeeService;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -13,24 +12,20 @@ import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.hamcrest.Matchers.*;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -100,6 +95,7 @@ class EmployeeControllerTest {
                 contentType(MediaType.APPLICATION_JSON).
                 content(objectMapper.writeValueAsString(request)));
        response.andDo(MockMvcResultHandlers.print());
+       response.andExpect(status().isCreated());
        response.andExpect(jsonPath("$.name", CoreMatchers.is(employeeDto.name())));
 
     }

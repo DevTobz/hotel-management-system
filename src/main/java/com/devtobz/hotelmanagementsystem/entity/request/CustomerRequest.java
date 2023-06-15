@@ -1,7 +1,7 @@
-package com.devtobz.hotelmanagementsystem.Entity.Request;
+package com.devtobz.hotelmanagementsystem.entity.request;
 
-import com.devtobz.hotelmanagementsystem.Entity.Enum.Gender;
-import com.devtobz.hotelmanagementsystem.Entity.Enum.IdentificationType;
+import com.devtobz.hotelmanagementsystem.entity.Enum.Gender;
+import com.devtobz.hotelmanagementsystem.entity.Enum.IdentificationType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

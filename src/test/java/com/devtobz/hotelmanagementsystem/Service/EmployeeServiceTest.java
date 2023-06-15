@@ -1,12 +1,12 @@
 package com.devtobz.hotelmanagementsystem.Service;
 
-import com.devtobz.hotelmanagementsystem.Entity.Dto.EmployeeDto;
-import com.devtobz.hotelmanagementsystem.Entity.Employee;
-import com.devtobz.hotelmanagementsystem.Entity.Enum.Gender;
-import com.devtobz.hotelmanagementsystem.Entity.Enum.Role;
-import com.devtobz.hotelmanagementsystem.Entity.Mapper.EmployeeMapper;
-import com.devtobz.hotelmanagementsystem.Entity.Request.EmployeeRequest;
-import com.devtobz.hotelmanagementsystem.Entity.Request.EmployeeUpdate;
+import com.devtobz.hotelmanagementsystem.entity.dto.EmployeeDto;
+import com.devtobz.hotelmanagementsystem.entity.Employee;
+import com.devtobz.hotelmanagementsystem.entity.Enum.Gender;
+import com.devtobz.hotelmanagementsystem.entity.Enum.Role;
+import com.devtobz.hotelmanagementsystem.entity.mapper.EmployeeMapper;
+import com.devtobz.hotelmanagementsystem.entity.request.EmployeeRequest;
+import com.devtobz.hotelmanagementsystem.entity.request.EmployeeUpdate;
 import com.devtobz.hotelmanagementsystem.Repository.EmployeeRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -103,10 +102,11 @@ class EmployeeServiceTest {
     @Test
     void createEmployee() {
 
-        // When
+        //Mock
         when(employeeRepository.save(employee1)).thenReturn(employee1);
         when(employeeMapper.apply(employee1)).thenReturn(employeeDto);
-        //Mock
+
+        // When
         ArgumentCaptor<Employee> employeeArgumentCaptor = ArgumentCaptor.
                                                             forClass(Employee.class);
         employeeService.createEmployee(request);

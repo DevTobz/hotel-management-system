@@ -1,15 +1,13 @@
 package com.devtobz.hotelmanagementsystem.Repository;
 
-import com.devtobz.hotelmanagementsystem.Entity.Customer;
-import com.devtobz.hotelmanagementsystem.Entity.Enum.CheckOutStatus;
-import com.devtobz.hotelmanagementsystem.Entity.Enum.Gender;
-import com.devtobz.hotelmanagementsystem.Entity.Enum.IdentificationType;
+import com.devtobz.hotelmanagementsystem.entity.Customer;
+import com.devtobz.hotelmanagementsystem.entity.Enum.CheckOutStatus;
+import com.devtobz.hotelmanagementsystem.entity.Enum.Gender;
+import com.devtobz.hotelmanagementsystem.entity.Enum.IdentificationType;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-
-import java.util.Optional;
 
 @DataJpaTest
 class CustomerRepositoryTest {

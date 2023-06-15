@@ -1,7 +1,7 @@
-package com.devtobz.hotelmanagementsystem.Entity.Dto;
+package com.devtobz.hotelmanagementsystem.entity.dto;
 
-import com.devtobz.hotelmanagementsystem.Entity.Enum.Gender;
-import com.devtobz.hotelmanagementsystem.Entity.Enum.Role;
+import com.devtobz.hotelmanagementsystem.entity.Enum.Gender;
+import com.devtobz.hotelmanagementsystem.entity.Enum.Role;
 import lombok.Builder;
 
 @Builder

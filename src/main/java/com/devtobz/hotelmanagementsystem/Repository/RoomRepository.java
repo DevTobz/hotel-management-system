@@ -1,6 +1,6 @@
 package com.devtobz.hotelmanagementsystem.Repository;
 
-import com.devtobz.hotelmanagementsystem.Entity.Room;
+import com.devtobz.hotelmanagementsystem.entity.Room;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

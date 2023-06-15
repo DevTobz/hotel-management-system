@@ -1,4 +1,4 @@
-package com.devtobz.hotelmanagementsystem.Entity.Enum;
+package com.devtobz.hotelmanagementsystem.entity.Enum;
 
 public enum CheckOutStatus {
     Checked_Out,

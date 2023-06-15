@@ -1,8 +1,8 @@
-package com.devtobz.hotelmanagementsystem.Entity;
+package com.devtobz.hotelmanagementsystem.entity;
 
-import com.devtobz.hotelmanagementsystem.Entity.Enum.CheckOutStatus;
-import com.devtobz.hotelmanagementsystem.Entity.Enum.Gender;
-import com.devtobz.hotelmanagementsystem.Entity.Enum.IdentificationType;
+import com.devtobz.hotelmanagementsystem.entity.Enum.CheckOutStatus;
+import com.devtobz.hotelmanagementsystem.entity.Enum.Gender;
+import com.devtobz.hotelmanagementsystem.entity.Enum.IdentificationType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
