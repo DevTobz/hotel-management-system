@@ -1,7 +1,7 @@
-package com.devtobz.hotelmanagementsystem.Config;
+package com.devtobz.hotelmanagementsystem.config;
 
 import com.devtobz.hotelmanagementsystem.entity.Employee;
-import com.devtobz.hotelmanagementsystem.Repository.EmployeeRepository;
+import com.devtobz.hotelmanagementsystem.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

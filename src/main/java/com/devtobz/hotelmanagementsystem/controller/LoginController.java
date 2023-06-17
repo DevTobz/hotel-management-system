@@ -1,8 +1,8 @@
-package com.devtobz.hotelmanagementsystem.Controller;
+package com.devtobz.hotelmanagementsystem.controller;
 
 import com.devtobz.hotelmanagementsystem.entity.LoginDetails;
 import com.devtobz.hotelmanagementsystem.entity.response.ApiResponse;
-import com.devtobz.hotelmanagementsystem.Service.LoginService;
+import com.devtobz.hotelmanagementsystem.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,11 +1,12 @@
-package com.devtobz.hotelmanagementsystem.Service;
+package com.devtobz.hotelmanagementsystem.service;
 
 import com.devtobz.hotelmanagementsystem.entity.dto.RoomDto;
 import com.devtobz.hotelmanagementsystem.entity.mapper.RoomMapper;
 import com.devtobz.hotelmanagementsystem.entity.request.RoomUpdate;
 import com.devtobz.hotelmanagementsystem.entity.Room;
 import com.devtobz.hotelmanagementsystem.entity.request.RoomRequest;
-import com.devtobz.hotelmanagementsystem.Repository.RoomRepository;
+import com.devtobz.hotelmanagementsystem.exception.RoomException;
+import com.devtobz.hotelmanagementsystem.repository.RoomRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,7 +49,7 @@ public class RoomService {
     @Transactional
     public RoomDto updateRoomStatusByRoomNumber(RoomUpdate roomUpdate, int roomNumber) {
         Room room = roomRepository.findRoomByRoomNumber(roomNumber).
-                orElseThrow(()->new RuntimeException("Room wasn't found in the database"));
+                orElseThrow(()->new RoomException("Room wasn't found in the database"));
 
         if(roomUpdate.isRoomAvailability()){
             room.setAvailabilityStatus("Available");

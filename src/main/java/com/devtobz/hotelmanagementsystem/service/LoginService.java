@@ -1,9 +1,10 @@
-package com.devtobz.hotelmanagementsystem.Service;
+package com.devtobz.hotelmanagementsystem.service;
 
 import com.devtobz.hotelmanagementsystem.entity.Employee;
 import com.devtobz.hotelmanagementsystem.entity.Enum.Role;
 import com.devtobz.hotelmanagementsystem.entity.LoginDetails;
-import com.devtobz.hotelmanagementsystem.Repository.EmployeeRepository;
+import com.devtobz.hotelmanagementsystem.exception.EmployeeException;
+import com.devtobz.hotelmanagementsystem.repository.EmployeeRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ public class LoginService {
     @Transactional
     public String authenticate(LoginDetails loginDetails, String name) {
         Employee employee = employeeRepository.findByName(name).
-                orElseThrow(()->new RuntimeException("Employee not found in the database"));
+                orElseThrow(()->new EmployeeException("Employee not found in the database"));
 
         if(employee.getRole().equals(Role.Receptionist)||employee.getRole().equals(Role.Manager)){
             employee.setUsername(loginDetails.getUsername());

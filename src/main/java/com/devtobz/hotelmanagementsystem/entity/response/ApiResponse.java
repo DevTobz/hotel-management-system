@@ -14,6 +14,15 @@ public class ApiResponse {
     private boolean isSuccessful;
     private Object data;
     private int status;
-
     private String message;
+
+    public ApiResponse(ZonedDateTime timeStamp,
+                       boolean isSuccessful,
+                       Object data,
+                       int status) {
+        this.timeStamp = timeStamp;
+        this.isSuccessful = isSuccessful;
+        this.data = data;
+        this.status = status;
+    }
 }

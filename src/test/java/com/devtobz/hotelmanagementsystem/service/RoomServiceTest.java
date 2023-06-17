@@ -1,4 +1,4 @@
-package com.devtobz.hotelmanagementsystem.Service;
+package com.devtobz.hotelmanagementsystem.service;
 
 import com.devtobz.hotelmanagementsystem.entity.dto.RoomDto;
 import com.devtobz.hotelmanagementsystem.entity.Enum.BedType;
@@ -6,7 +6,7 @@ import com.devtobz.hotelmanagementsystem.entity.mapper.RoomMapper;
 import com.devtobz.hotelmanagementsystem.entity.request.RoomRequest;
 import com.devtobz.hotelmanagementsystem.entity.request.RoomUpdate;
 import com.devtobz.hotelmanagementsystem.entity.Room;
-import com.devtobz.hotelmanagementsystem.Repository.RoomRepository;
+import com.devtobz.hotelmanagementsystem.repository.RoomRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

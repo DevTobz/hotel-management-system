@@ -1,11 +1,11 @@
-package com.devtobz.hotelmanagementsystem.Controller;
+package com.devtobz.hotelmanagementsystem.controller;
 
 import com.devtobz.hotelmanagementsystem.entity.dto.EmployeeDto;
 import com.devtobz.hotelmanagementsystem.entity.Employee;
 import com.devtobz.hotelmanagementsystem.entity.Enum.Gender;
 import com.devtobz.hotelmanagementsystem.entity.Enum.Role;
 import com.devtobz.hotelmanagementsystem.entity.request.EmployeeRequest;
-import com.devtobz.hotelmanagementsystem.Service.EmployeeService;
+import com.devtobz.hotelmanagementsystem.service.EmployeeService;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.hamcrest.CoreMatchers;

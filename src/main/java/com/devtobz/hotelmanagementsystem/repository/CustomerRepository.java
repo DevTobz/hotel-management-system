@@ -1,4 +1,4 @@
-package com.devtobz.hotelmanagementsystem.Repository;
+package com.devtobz.hotelmanagementsystem.repository;
 
 import com.devtobz.hotelmanagementsystem.entity.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;

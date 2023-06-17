@@ -1,4 +1,4 @@
-package com.devtobz.hotelmanagementsystem.Service;
+package com.devtobz.hotelmanagementsystem.service;
 
 
 import com.devtobz.hotelmanagementsystem.entity.dto.EmployeeDto;
@@ -6,7 +6,8 @@ import com.devtobz.hotelmanagementsystem.entity.Employee;
 import com.devtobz.hotelmanagementsystem.entity.mapper.EmployeeMapper;
 import com.devtobz.hotelmanagementsystem.entity.request.EmployeeRequest;
 import com.devtobz.hotelmanagementsystem.entity.request.EmployeeUpdate;
-import com.devtobz.hotelmanagementsystem.Repository.EmployeeRepository;
+import com.devtobz.hotelmanagementsystem.exception.EmployeeException;
+import com.devtobz.hotelmanagementsystem.repository.EmployeeRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -57,7 +58,7 @@ public class EmployeeService {
     @Transactional
     public EmployeeDto editEmployee(String name, EmployeeUpdate employeeUpdate) {
         Employee employee = employeeRepository.findByName(name).
-                orElseThrow(()-> new RuntimeException("Employee wasn't found in the database"));
+                orElseThrow(()-> new EmployeeException("Employee wasn't found in the database"));
 
         employee.setEmail(employeeUpdate.getEmail());
         employee.setAge(employeeUpdate.getAge());
@@ -75,7 +76,7 @@ public class EmployeeService {
     public String deleteEmployee(String name) {
 
         Employee employee = employeeRepository.findByName(name).
-                orElseThrow(()-> new RuntimeException("Employee wasn't found in the database"));
+                orElseThrow(()-> new EmployeeException("Employee wasn't found in the database"));
         employeeRepository.delete(employee);
         return "Employee "+ name + " have been deleted from the database";
     }

@@ -1,4 +1,4 @@
-package com.devtobz.hotelmanagementsystem.Service;
+package com.devtobz.hotelmanagementsystem.service;
 
 import com.devtobz.hotelmanagementsystem.entity.dto.EmployeeDto;
 import com.devtobz.hotelmanagementsystem.entity.Employee;
@@ -7,7 +7,7 @@ import com.devtobz.hotelmanagementsystem.entity.Enum.Role;
 import com.devtobz.hotelmanagementsystem.entity.mapper.EmployeeMapper;
 import com.devtobz.hotelmanagementsystem.entity.request.EmployeeRequest;
 import com.devtobz.hotelmanagementsystem.entity.request.EmployeeUpdate;
-import com.devtobz.hotelmanagementsystem.Repository.EmployeeRepository;
+import com.devtobz.hotelmanagementsystem.repository.EmployeeRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
