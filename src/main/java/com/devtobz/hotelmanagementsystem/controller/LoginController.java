@@ -20,7 +20,6 @@ public class LoginController {
     @PutMapping(path = "/authenticate")
     public ResponseEntity<?> Authenticate(@RequestBody LoginDetails loginDetails,
                                        @RequestParam String name){
-
         ApiResponse apiResponse = ApiResponse.builder().
                 isSuccessful(true).
                 status(HttpStatus.OK.value()).

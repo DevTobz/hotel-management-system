@@ -2,6 +2,7 @@ package com.devtobz.hotelmanagementsystem.entity.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.ZonedDateTime;
@@ -9,6 +10,7 @@ import java.time.ZonedDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 public class ApiResponse {
     private ZonedDateTime timeStamp;
     private boolean isSuccessful;

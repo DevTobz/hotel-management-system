@@ -8,12 +8,15 @@ import com.devtobz.hotelmanagementsystem.repository.EmployeeRepository;
 import com.devtobz.hotelmanagementsystem.service.LoginService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class LoginServiceImpl implements LoginService {
     @Autowired
     private EmployeeRepository employeeRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Transactional
     public String authenticate(LoginDetails loginDetails, String name) {
@@ -22,7 +25,7 @@ public class LoginServiceImpl implements LoginService {
 
         if(employee.getRole().equals(Role.Receptionist)||employee.getRole().equals(Role.Manager)){
             employee.setUsername(loginDetails.getUsername());
-            employee.setPassword(loginDetails.getPassword());
+            employee.setPassword(passwordEncoder.encode(loginDetails.getPassword()));
             employeeRepository.save(employee);
             return "User credentials created successfully";
         }else{

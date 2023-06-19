@@ -139,7 +139,6 @@ class EmployeeServiceTest {
 
         //Assert
         Assertions.assertThat(returnedEmployeeList.size()).isEqualTo(employeeList.size());
-        //Assertions.assertThat(returnedEmployeeList).asList().contains(employeeDto);
         Assertions.assertThat(returnedEmployeeList).hasSize(2);
         Assertions.assertThat(returnedEmployeeList).contains(employee1);
 

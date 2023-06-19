@@ -5,6 +5,7 @@ import com.devtobz.hotelmanagementsystem.entity.Employee;
 import com.devtobz.hotelmanagementsystem.entity.Enum.Gender;
 import com.devtobz.hotelmanagementsystem.entity.Enum.Role;
 import com.devtobz.hotelmanagementsystem.entity.request.EmployeeRequest;
+import com.devtobz.hotelmanagementsystem.service.EmployeeService;
 import com.devtobz.hotelmanagementsystem.service.serviceImpl.EmployeeServiceImpl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -43,7 +44,7 @@ class EmployeeControllerTest {
     private ObjectMapper objectMapper;
 
     @MockBean
-    private EmployeeServiceImpl employeeService;
+    private EmployeeService employeeService;
 
     private EmployeeRequest request;
     private Employee employee;
@@ -96,8 +97,7 @@ class EmployeeControllerTest {
                 content(objectMapper.writeValueAsString(request)));
        response.andDo(MockMvcResultHandlers.print());
        response.andExpect(status().isCreated());
-       response.andExpect(jsonPath("$.name", CoreMatchers.is(employeeDto.name())));
-
+       response.andExpect(jsonPath("$.data.name", CoreMatchers.is(employeeDto.name())));
     }
 
     @Test
@@ -108,7 +108,8 @@ class EmployeeControllerTest {
                 get("/homepage/employee/getAllEmployee").
                 contentType(MediaType.APPLICATION_JSON));
         actions.andDo(print());
-       actions.andExpect(jsonPath("$[0].name",CoreMatchers.is("employeeTest1")));
+        actions.andExpect(status().isOk());
+       actions.andExpect(jsonPath("$.data[0].name",CoreMatchers.is("employeeTest1")));
     }
 
     @Test
