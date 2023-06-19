@@ -8,6 +8,7 @@ import com.devtobz.hotelmanagementsystem.entity.mapper.EmployeeMapper;
 import com.devtobz.hotelmanagementsystem.entity.request.EmployeeRequest;
 import com.devtobz.hotelmanagementsystem.entity.request.EmployeeUpdate;
 import com.devtobz.hotelmanagementsystem.repository.EmployeeRepository;
+import com.devtobz.hotelmanagementsystem.service.serviceImpl.EmployeeServiceImpl;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -34,7 +35,7 @@ class EmployeeServiceTest {
     private EmployeeMapper employeeMapper;
 
     @InjectMocks
-    private EmployeeService employeeService;
+    private EmployeeServiceImpl employeeService;
 
     private Employee employee1;
     private Employee employee2;

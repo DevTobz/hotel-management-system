@@ -2,7 +2,7 @@ package com.devtobz.hotelmanagementsystem.controller;
 
 import com.devtobz.hotelmanagementsystem.entity.LoginDetails;
 import com.devtobz.hotelmanagementsystem.entity.response.ApiResponse;
-import com.devtobz.hotelmanagementsystem.service.LoginService;
+import com.devtobz.hotelmanagementsystem.service.serviceImpl.LoginServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +15,7 @@ import java.time.ZonedDateTime;
 public class LoginController {
 
     @Autowired
-    private LoginService loginService;
+    private LoginServiceImpl loginService;
 
     @PutMapping(path = "/authenticate")
     public ResponseEntity<?> Authenticate(@RequestBody LoginDetails loginDetails,

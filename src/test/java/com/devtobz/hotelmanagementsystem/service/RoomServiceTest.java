@@ -7,6 +7,7 @@ import com.devtobz.hotelmanagementsystem.entity.request.RoomRequest;
 import com.devtobz.hotelmanagementsystem.entity.request.RoomUpdate;
 import com.devtobz.hotelmanagementsystem.entity.Room;
 import com.devtobz.hotelmanagementsystem.repository.RoomRepository;
+import com.devtobz.hotelmanagementsystem.service.serviceImpl.RoomServiceImpl;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -30,7 +31,7 @@ class RoomServiceTest {
     @Mock
     private RoomMapper roomMapper;
     @InjectMocks
-    private RoomService roomService;
+    private RoomServiceImpl roomService;
 
     private Room roomTest1;
     private Room roomTest2;

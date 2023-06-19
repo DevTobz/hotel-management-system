@@ -5,7 +5,7 @@ import com.devtobz.hotelmanagementsystem.entity.Employee;
 import com.devtobz.hotelmanagementsystem.entity.Enum.Gender;
 import com.devtobz.hotelmanagementsystem.entity.Enum.Role;
 import com.devtobz.hotelmanagementsystem.entity.request.EmployeeRequest;
-import com.devtobz.hotelmanagementsystem.service.EmployeeService;
+import com.devtobz.hotelmanagementsystem.service.serviceImpl.EmployeeServiceImpl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.hamcrest.CoreMatchers;
@@ -43,7 +43,7 @@ class EmployeeControllerTest {
     private ObjectMapper objectMapper;
 
     @MockBean
-    private EmployeeService employeeService;
+    private EmployeeServiceImpl employeeService;
 
     private EmployeeRequest request;
     private Employee employee;

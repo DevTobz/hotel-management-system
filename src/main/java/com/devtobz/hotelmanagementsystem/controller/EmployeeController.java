@@ -3,7 +3,7 @@ package com.devtobz.hotelmanagementsystem.controller;
 import com.devtobz.hotelmanagementsystem.entity.request.EmployeeRequest;
 import com.devtobz.hotelmanagementsystem.entity.request.EmployeeUpdate;
 import com.devtobz.hotelmanagementsystem.entity.response.ApiResponse;
-import com.devtobz.hotelmanagementsystem.service.EmployeeService;
+import com.devtobz.hotelmanagementsystem.service.serviceImpl.EmployeeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +15,7 @@ import java.time.ZonedDateTime;
 @RequestMapping(path = "/homepage")
 public class EmployeeController {
     @Autowired
-    private EmployeeService employeeService;
+    private EmployeeServiceImpl employeeService;
 
     // Saving Employee to database
     @PostMapping(path = "/employee/createEmployee")

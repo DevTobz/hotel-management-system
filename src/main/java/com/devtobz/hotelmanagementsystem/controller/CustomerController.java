@@ -2,7 +2,7 @@ package com.devtobz.hotelmanagementsystem.controller;
 
 import com.devtobz.hotelmanagementsystem.entity.request.CustomerRequest;
 import com.devtobz.hotelmanagementsystem.entity.response.ApiResponse;
-import com.devtobz.hotelmanagementsystem.service.CustomerService;
+import com.devtobz.hotelmanagementsystem.service.serviceImpl.CustomerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +14,7 @@ import java.time.ZonedDateTime;
 @RequestMapping(path = "/homepage")
 public class CustomerController {
     @Autowired
-    private CustomerService customerService;
+    private CustomerServiceImpl customerService;
 
     @PostMapping(path = "/customer/addCustomer")
     public ResponseEntity<?> addCustomer(@RequestBody CustomerRequest customerRequest){

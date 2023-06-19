@@ -3,7 +3,7 @@ package com.devtobz.hotelmanagementsystem.controller;
 import com.devtobz.hotelmanagementsystem.entity.request.RoomRequest;
 import com.devtobz.hotelmanagementsystem.entity.request.RoomUpdate;
 import com.devtobz.hotelmanagementsystem.entity.response.ApiResponse;
-import com.devtobz.hotelmanagementsystem.service.RoomService;
+import com.devtobz.hotelmanagementsystem.service.serviceImpl.RoomServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +16,7 @@ import java.time.ZonedDateTime;
 public class RoomController {
 
     @Autowired
-    private RoomService roomService;
+    private RoomServiceImpl roomService;
 
     // create new room
     @PostMapping(path = "/rooms/addRoom")
