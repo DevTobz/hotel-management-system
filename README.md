@@ -12,4 +12,4 @@ Key Features:
 
 -Staff Management: Handle staff scheduling, attendance, and task assignment to optimize workforce management and ensure efficient service delivery.
 
--Room Inventory: Maintain a comprehensive inventory of rooms, including their types, rates, amenities, and availability, to streamline the booking process.![Untitled-2023-05-24-0858](https://github.com/DevTobz/hotel-management-system/assets/132882544/30e298a1-c812-4398-a4d4-0c9787eb5ad4)
+-Room Inventory: Maintain a comprehensive inventory of rooms, including their types, rates, amenities, and availability, to streamline the booking process.
