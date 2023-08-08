@@ -19,8 +19,8 @@ public class LoginServiceImpl implements LoginService {
     private PasswordEncoder passwordEncoder;
 
     @Transactional
-    public String authenticate(LoginDetails loginDetails, String name) {
-        Employee employee = employeeRepository.findByName(name).
+    public String authenticate(LoginDetails loginDetails, String email) {
+        Employee employee = employeeRepository.findByEmail(email).
                 orElseThrow(()->new EmployeeException("Employee not found in the database"));
 
         if(employee.getRole().equals(Role.Receptionist)||employee.getRole().equals(Role.Manager)){

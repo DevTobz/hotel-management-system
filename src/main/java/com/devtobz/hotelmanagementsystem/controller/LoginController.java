@@ -19,12 +19,12 @@ public class LoginController {
 
     @PutMapping(path = "/authenticate")
     public ResponseEntity<?> Authenticate(@RequestBody LoginDetails loginDetails,
-                                       @RequestParam String name){
+                                       @RequestParam String email){
         ApiResponse apiResponse = ApiResponse.builder().
                 isSuccessful(true).
                 status(HttpStatus.OK.value()).
                 timeStamp(ZonedDateTime.now()).
-                data(loginService.authenticate(loginDetails,name)).
+                data(loginService.authenticate(loginDetails,email)).
                 build();
      return new ResponseEntity<>(apiResponse,HttpStatus.OK);
     }

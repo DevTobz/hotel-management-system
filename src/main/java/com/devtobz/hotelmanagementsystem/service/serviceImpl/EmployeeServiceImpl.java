@@ -57,8 +57,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     // updates User by name
     @Transactional
-    public EmployeeDto editEmployee(String name, EmployeeUpdate employeeUpdate) {
-        Employee employee = employeeRepository.findByName(name).
+    public EmployeeDto editEmployee(String email, EmployeeUpdate employeeUpdate) {
+        Employee employee = employeeRepository.findByEmail(email).
                 orElseThrow(()-> new EmployeeException("Employee wasn't found in the database"));
 
         employee.setEmail(employeeUpdate.getEmail());
@@ -74,11 +74,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     //Delete User
-    public String deleteEmployee(String name) {
+    public String deleteEmployee(String email) {
 
-        Employee employee = employeeRepository.findByName(name).
+        Employee employee = employeeRepository.findByEmail(email).
                 orElseThrow(()-> new EmployeeException("Employee wasn't found in the database"));
         employeeRepository.delete(employee);
-        return "Employee "+ name + " have been deleted from the database";
+        return "Employee "+ email + " have been deleted from the database";
     }
 }

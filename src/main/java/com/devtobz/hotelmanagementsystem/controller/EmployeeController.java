@@ -46,12 +46,12 @@ public class EmployeeController {
     //Update Employee by Name
     @PutMapping(path = "/employee/editEmployee")
     public ResponseEntity<?> editEmployee(EmployeeUpdate employeeUpdate,
-                                               @RequestParam String name){
+                                               @RequestParam String email){
         ApiResponse apiResponse = ApiResponse.builder().
                 isSuccessful(true).
                 status(HttpStatus.OK.value()).
                 timeStamp(ZonedDateTime.now()).
-                data(employeeService.editEmployee(name,employeeUpdate)).
+                data(employeeService.editEmployee(email,employeeUpdate)).
                 message("Employee Details updated successfully").
                 build();
     return new ResponseEntity<>(apiResponse,HttpStatus.OK);
@@ -60,8 +60,8 @@ public class EmployeeController {
 
     //Delete employee from the database
     @DeleteMapping(path = "/employee/deleteEmployee")
-    public ResponseEntity<?> deleteEmployee(@RequestParam String name){
-        String message = employeeService.deleteEmployee(name);
+    public ResponseEntity<?> deleteEmployee(@RequestParam String email){
+        String message = employeeService.deleteEmployee(email);
         ApiResponse apiResponse = ApiResponse.builder().
                 isSuccessful(true).
                 status(HttpStatus.OK.value()).

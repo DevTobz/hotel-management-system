@@ -10,13 +10,13 @@ import java.util.function.Function;
 public class EmployeeMapper implements Function<Employee, EmployeeDto> {
     @Override
     public EmployeeDto apply(Employee employee) {
-        return new EmployeeDto(employee.getName(),
+        return new EmployeeDto(employee.getFirstName(),
                 employee.getAge(),
                 employee.getGender(),
                 employee.getRole(),
                 employee.getSalary(),
                 employee.getPhoneNumber(),
-                employee.getAddress(),
+                employee.getLastName(),
                 employee.getEmail());
     }
 }

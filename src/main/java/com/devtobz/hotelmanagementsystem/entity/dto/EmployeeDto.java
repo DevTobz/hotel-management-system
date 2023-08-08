@@ -5,12 +5,12 @@ import com.devtobz.hotelmanagementsystem.entity.Enum.Role;
 import lombok.Builder;
 
 @Builder
-public record EmployeeDto( String name,
+public record EmployeeDto( String firstName,
                            int age,
                            Gender gender,
                            Role role,
                            int salary,
                            String phoneNumber,
-                           String address,
+                           String lastName,
                            String email) {
 }
