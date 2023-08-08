@@ -12,12 +12,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class EmployeeRequest {
-    private String name;
+    private String firstName;
     private int age;
     private Gender gender;
     private Role role;
     private int salary;
     private String phoneNumber;
-    private String address;
+    private String lastName;
     private String email;
 }

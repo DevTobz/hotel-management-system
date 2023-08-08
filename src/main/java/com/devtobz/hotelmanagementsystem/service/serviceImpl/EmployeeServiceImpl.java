@@ -28,9 +28,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     public EmployeeDto createEmployee(EmployeeRequest request) {
        Employee employee= new Employee();
 
-       employee.setAddress(request.getAddress());
+       employee.setLastName(request.getLastName());
        employee.setAge(request.getAge());
-       employee.setName(request.getName());
+       employee.setFirstName(request.getFirstName());
        employee.setGender(request.getGender());
        employee.setEmail(request.getEmail());
        employee.setRole(request.getRole());
@@ -63,7 +63,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         employee.setEmail(employeeUpdate.getEmail());
         employee.setAge(employeeUpdate.getAge());
-        employee.setAddress(employeeUpdate.getAddress());
+        employee.setLastName(employeeUpdate.getLastName());
         employee.setSalary(employeeUpdate.getSalary());
         employee.setPhoneNumber(employeeUpdate.getPhoneNumber());
         employee.setRole(employeeUpdate.getRole());

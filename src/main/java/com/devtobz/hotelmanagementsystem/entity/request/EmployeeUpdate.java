@@ -11,10 +11,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class EmployeeUpdate {
+
+    private String firstName;
+    private String lastName;
     private int age;
     private Role role;
     private int salary;
     private String phoneNumber;
-    private String address;
     private String email;
 }

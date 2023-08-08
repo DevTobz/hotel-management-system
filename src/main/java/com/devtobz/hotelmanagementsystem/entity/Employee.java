@@ -21,7 +21,7 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long Id;
 
-    private String name;
+    private String firstName;
     private int age;
     @Enumerated(EnumType.STRING)
     private Gender gender;
@@ -30,7 +30,7 @@ public class Employee {
     private Role role;
     private int salary;
     private String phoneNumber;
-    private String address;
+    private String lastName;
     private String email;
 
     private String username;
