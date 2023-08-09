@@ -57,7 +57,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     // updates User by name
     @Transactional
-    public EmployeeDto editEmployee(String email, EmployeeUpdate employeeUpdate) {
+    public String editEmployee(String email, EmployeeUpdate employeeUpdate) {
         Employee employee = employeeRepository.findByEmail(email).
                 orElseThrow(()-> new EmployeeException("Employee wasn't found in the database"));
 
@@ -70,7 +70,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         employeeRepository.save(employee);
 
-        return employeeMapper.apply(employee);
+        return "Employee has been updated";
     }
 
     //Delete User

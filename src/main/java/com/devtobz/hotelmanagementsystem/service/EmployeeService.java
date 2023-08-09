@@ -10,6 +10,6 @@ import java.util.List;
 public interface EmployeeService {
     EmployeeDto createEmployee(EmployeeRequest request);
     List<Employee> getAllEmployee();
-    EmployeeDto editEmployee(String name, EmployeeUpdate employeeUpdate);
+    String editEmployee(String name, EmployeeUpdate employeeUpdate);
     String deleteEmployee(String name);
 }

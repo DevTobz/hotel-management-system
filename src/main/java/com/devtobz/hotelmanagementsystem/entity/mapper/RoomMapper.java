@@ -18,7 +18,7 @@ public class RoomMapper implements Function<Room, RoomDto> {
                 room.getCleanStatus(),
                 room.getPrice(),
                 room.getBedType(),
-               customerMapper.apply(room.getCustomer())
+                customerMapper.apply(room.getCustomer())
         );
     }
 }

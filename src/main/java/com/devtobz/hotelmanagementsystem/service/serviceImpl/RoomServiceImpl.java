@@ -24,7 +24,7 @@ public class RoomServiceImpl implements RoomService {
     private RoomMapper roomMapper;
 
     //Creates Room and persist to the database
-    public RoomDto createRoom(RoomRequest roomRequest) {
+    public String createRoom(RoomRequest roomRequest) {
         Room room = new Room();
         room.setRoomNumber(roomRequest.getRoomNumber());
         room.setPrice(roomRequest.getPrice());
@@ -38,7 +38,7 @@ public class RoomServiceImpl implements RoomService {
         }
         roomRepository.save(room);
 
-        return roomMapper.apply(room);
+        return "Room created Successfully";
     }
 
     //Gets all rooms
@@ -48,7 +48,7 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Transactional
-    public RoomDto updateRoomStatusByRoomNumber(RoomUpdate roomUpdate, int roomNumber) {
+    public String updateRoomStatusByRoomNumber(RoomUpdate roomUpdate, int roomNumber) {
         Room room = roomRepository.findRoomByRoomNumber(roomNumber).
                 orElseThrow(()->new RoomException("Room wasn't found in the database"));
 
@@ -60,7 +60,7 @@ public class RoomServiceImpl implements RoomService {
         room.setCleanStatus(roomUpdate.getCleanStatus());
         roomRepository.save(room);
 
-        return roomMapper.apply(room);
+        return "Room is updated successfully";
     }
 
     //returns every available room

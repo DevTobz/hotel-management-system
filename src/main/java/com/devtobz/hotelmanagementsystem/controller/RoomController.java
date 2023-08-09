@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.ZonedDateTime;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(path = "/homepage")
 public class RoomController {

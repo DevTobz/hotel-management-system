@@ -10,6 +10,9 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 @EnableWebSecurity
 @Configuration
@@ -23,8 +26,9 @@ public class SecurityConfig{
         http.csrf(AbstractHttpConfigurer::disable).
                 cors(Customizer.withDefaults()).
                 authorizeHttpRequests(auth->{
-                    auth.requestMatchers("/login/**").permitAll();
-                    auth.anyRequest().authenticated();
+                    auth.anyRequest().permitAll();
+                    //auth.requestMatchers("/login/**").permitAll();
+                   // auth.anyRequest().authenticated();
                 }).formLogin(Customizer.withDefaults());
 
         return http.build();
@@ -42,5 +46,6 @@ public class SecurityConfig{
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
+
 
 }

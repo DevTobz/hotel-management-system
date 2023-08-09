@@ -8,9 +8,9 @@ import com.devtobz.hotelmanagementsystem.entity.request.RoomUpdate;
 import java.util.List;
 
 public interface RoomService {
-    RoomDto createRoom(RoomRequest roomRequest);
+    String createRoom(RoomRequest roomRequest);
     List<Room> getAllRoom();
-    RoomDto updateRoomStatusByRoomNumber(RoomUpdate roomUpdate, int roomNumber);
+    String updateRoomStatusByRoomNumber(RoomUpdate roomUpdate, int roomNumber);
     List<Room> getAvailableRooms();
     List<Room> getAllCleanedAndAvailableRooms();
 }
