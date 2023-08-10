@@ -58,6 +58,8 @@ public class RoomServiceImpl implements RoomService {
             room.setAvailabilityStatus("Occupied");
         }
         room.setCleanStatus(roomUpdate.getCleanStatus());
+        room.setPrice(roomUpdate.getPrice());
+        room.setBedType(roomUpdate.getBedType());
         roomRepository.save(room);
 
         return "Room is updated successfully";

@@ -46,7 +46,7 @@ public class EmployeeController {
 
     //Update Employee by Name
     @PutMapping(path = "/employee/editEmployee")
-    public ResponseEntity<?> editEmployee(EmployeeUpdate employeeUpdate,
+    public ResponseEntity<?> editEmployee(@RequestBody EmployeeUpdate employeeUpdate,
                                                @RequestParam String email){
         ApiResponse apiResponse = ApiResponse.builder().
                 isSuccessful(true).

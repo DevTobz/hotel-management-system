@@ -1,5 +1,6 @@
 package com.devtobz.hotelmanagementsystem.service.serviceImpl;
 
+import com.devtobz.hotelmanagementsystem.config.EmployeeUserDetails;
 import com.devtobz.hotelmanagementsystem.entity.Employee;
 import com.devtobz.hotelmanagementsystem.entity.Enum.Role;
 import com.devtobz.hotelmanagementsystem.entity.LoginDetails;
@@ -11,12 +12,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
+
 @Service
 public class LoginServiceImpl implements LoginService {
     @Autowired
     private EmployeeRepository employeeRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private JwtService jwtService;
 
     @Transactional
     public String authenticate(LoginDetails loginDetails, String email) {
@@ -33,4 +38,15 @@ public class LoginServiceImpl implements LoginService {
         }
     }
 
+    public String signIn(LoginDetails loginDetails) {
+        Employee employee = employeeRepository.findByUsername(loginDetails.getUsername()).
+                orElseThrow(()-> new EmployeeException("Employee wasn't found in the database"));
+
+        EmployeeUserDetails employeeUserDetails = new EmployeeUserDetails(employee);
+        String token = jwtService.generateToken(employeeUserDetails);
+
+        return token;
+
+
+    }
 }
