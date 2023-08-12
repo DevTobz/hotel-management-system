@@ -23,6 +23,7 @@ public class LoginServiceImpl implements LoginService {
     @Autowired
     private JwtService jwtService;
 
+
     @Transactional
     public String authenticate(LoginDetails loginDetails, String email) {
         Employee employee = employeeRepository.findByEmail(email).
@@ -41,11 +42,15 @@ public class LoginServiceImpl implements LoginService {
     public String signIn(LoginDetails loginDetails) {
         Employee employee = employeeRepository.findByUsername(loginDetails.getUsername()).
                 orElseThrow(()-> new EmployeeException("Employee wasn't found in the database"));
+        if(passwordEncoder.matches(loginDetails.getPassword(), employee.getPassword()n)){
+            EmployeeUserDetails employeeUserDetails = new EmployeeUserDetails(employee);
+            String token = jwtService.generateToken(employeeUserDetails);
 
-        EmployeeUserDetails employeeUserDetails = new EmployeeUserDetails(employee);
-        String token = jwtService.generateToken(employeeUserDetails);
+            return token;
+        }else{
+            return "Password isn't correct";
+        }
 
-        return token;
 
 
     }
