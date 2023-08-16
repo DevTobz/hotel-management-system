@@ -27,6 +27,7 @@ public class EmployeeController {
                 status(HttpStatus.CREATED.value()).
                 timeStamp(ZonedDateTime.now()).
                 data(employeeService.createEmployee(request)).
+                message("Employee created successfully").
                 build();
 
         return new ResponseEntity<>(apiResponse,HttpStatus.CREATED);

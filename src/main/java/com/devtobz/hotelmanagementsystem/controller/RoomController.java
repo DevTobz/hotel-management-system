@@ -38,6 +38,7 @@ public class RoomController {
                 status(HttpStatus.OK.value()).
                 timeStamp(ZonedDateTime.now()).
                 data(roomService.getAllRoom()).
+                message("Room created successfully").
                 build();
         return new ResponseEntity<>(apiResponse,HttpStatus.OK);
     }

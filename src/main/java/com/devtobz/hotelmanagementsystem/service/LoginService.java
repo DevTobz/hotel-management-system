@@ -1,8 +1,9 @@
 package com.devtobz.hotelmanagementsystem.service;
 
 import com.devtobz.hotelmanagementsystem.entity.LoginDetails;
+import com.devtobz.hotelmanagementsystem.entity.response.AuthResponse;
 
 public interface LoginService {
-    String authenticate(LoginDetails loginDetails, String name);
-    String signIn(LoginDetails loginDetails);
+    AuthResponse authenticate(LoginDetails loginDetails, String name);
+    AuthResponse signIn(LoginDetails loginDetails);
 }
